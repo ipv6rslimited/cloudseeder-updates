@@ -1,0 +1,94 @@
+[
+  {
+    "title": "mastodon",
+    "version": 1
+  },
+  {
+    "title": "ollamaweb",
+    "version": 1
+  },
+  {
+    "title": "nextcloud",
+    "version": 1
+  },
+  {
+    "title": "codeserver",
+    "version": 1
+  },
+  {
+    "title": "wordpress",
+    "version": 1
+  },
+  {
+    "title": "ghost",
+    "version": 1
+  },
+  {
+    "title": "lemmy",
+    "version": 1
+  },
+  {
+    "title": "rocketchat",
+    "version": 1
+  },
+  {
+    "title": "vaultwarden",
+    "version": 1
+  },
+  {
+    "title": "bluesky",
+    "version": 1
+  },
+  {
+    "title": "mail",
+    "version": 1
+  },
+  {
+    "title": "stalwart",
+    "version": 1
+  },
+  {
+    "title": "jellyfin",
+    "version": 1
+  },
+  {
+    "title": "peertube",
+    "version": 1
+  },
+  {
+    "title": "immich",
+    "version": 1
+  },
+  {
+    "title": "planka",
+    "version": 1
+  },
+  {
+    "title": "xmpp",
+    "version": 1
+  },
+  {
+    "title": "yacy",
+    "version": 1
+  },
+  {
+    "title": "gitlab",
+    "version": 1
+  },
+  {
+    "title": "minecraft",
+    "version": 1
+  },
+  {
+    "title": "navidrome",
+    "version": 1
+  },
+  {
+    "title": "lamp",
+    "version": 1
+  },
+  {
+    "title": "base",
+    "version": 1
+  }
+]
