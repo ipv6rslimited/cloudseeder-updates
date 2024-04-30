@@ -24,7 +24,15 @@
     "version": 1
   },
   {
+    "title": "misskey",
+    "version": 1
+  },
+  {
     "title": "lemmy",
+    "version": 1
+  },
+  {
+    "title": "pixelfed",
     "version": 1
   },
   {
@@ -72,11 +80,19 @@
     "version": 1
   },
   {
+    "title": "gitea",
+    "version": 1
+  },
+  {
     "title": "gitlab",
     "version": 1
   },
   {
     "title": "minecraft",
+    "version": 1
+  },
+  {
+    "title": "funkwhale",
     "version": 1
   },
   {
