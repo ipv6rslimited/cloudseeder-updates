@@ -1,0 +1,17 @@
+#!/bin/bash
+# pixelfed upgrade 1 -> 2
+
+sudo usermod -a -G www-data pixel
+(cd /var/www/html &&
+ chown -R www-data:www-data vendor &&
+ chown -R www-data:www-data bootstrap &&
+ chown -R www-data:www-data CHANGELOG.md &&
+ chmod -R 0775 vendor &&
+ chmod -R 0775 bootstrap &&
+ chmod -R 0775 CHANGELOG.md &&
+ git config --global --add safe.directory /var/www/html &&
+ git pull origin v0.12.1)
+
+su - pixel -c "cd /var/www/html && composer install && sudo php artisan config:cache && sudo php artisan route:cache && php artisan migrate --force"
+
+echo 2 > /root/.targetonce
