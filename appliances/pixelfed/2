@@ -3,11 +3,11 @@
 
 sudo usermod -a -G www-data pixel
 (cd /var/www/html &&
+ git config --global --add safe.directory /var/www/html &&
+ git pull origin v0.12.1 &&
  chmod -R 0775 vendor &&
  chmod -R 0775 bootstrap &&
  chmod -R 0775 CHANGELOG.md &&
- git config --global --add safe.directory /var/www/html &&
- git pull origin v0.12.1 &&
  chown -R www-data:www-data vendor &&
  chown -R www-data:www-data bootstrap &&
  chown -R www-data:www-data CHANGELOG.md &&
