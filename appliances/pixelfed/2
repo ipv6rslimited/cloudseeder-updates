@@ -4,6 +4,7 @@
 sudo usermod -a -G www-data pixel
 (cd /var/www/html &&
  git config --global --add safe.directory /var/www/html &&
+ git stash push --include-untracked
  git pull origin v0.12.1 &&
  chmod -R 0775 vendor &&
  chmod -R 0775 bootstrap &&
