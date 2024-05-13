@@ -1,0 +1,16 @@
+#!/bin/bash
+# navidrome upgrade 1 -> 2
+
+arch=$(arch | sed s/aarch64/arm64/ | sed s/x86_64/amd64/)
+systemctl stop navidrome
+
+wget https://github.com/navidrome/navidrome/releases/download/v0.52.5/navidrome_0.52.5_linux_${arch}.tar.gz -O Navidrome.tar.gz
+tar -xvzf Navidrome.tar.gz -C /opt/navidrome/
+chown -R navidrome:navidrome /opt/navidrome
+rm Navidrome.tar.gz
+
+systemctl start navidrome
+
+
+echo 2 > /root/.targetonce
+
