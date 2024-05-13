@@ -1,0 +1,13 @@
+#!/bin/bash
+# rocketchat upgrade 1 -> 2
+
+systemctl stop rocketchat
+rm -rf /opt/Rocket.Chat
+curl -L https://releases.rocket.chat/6.8.0/download -o /tmp/rocket.chat.tgz
+tar -xzf /tmp/rocket.chat.tgz -C /tmp
+cd /tmp/bundle/programs/server && npm install --production && node npm-rebuild.js && npm rebuild bcrypt --build-from-source
+mv /tmp/bundle /opt/Rocket.Chat
+chown -R rocketchat:rocketchat /opt/Rocket.Chat
+systemctl start rocketchat
+
+echo 2 > /root/.targetonce
