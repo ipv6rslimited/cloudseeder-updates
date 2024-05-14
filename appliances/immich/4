@@ -1,0 +1,125 @@
+#!/bin/bash
+# immich upgrade 2 -> 3
+
+systemctl stop immich-machine-learning.service
+systemctl stop immich-microservices.service
+systemctl stop immich.service
+
+TMP=/tmp/immich-$(uuidgen)
+mkdir -p $TMP
+git clone https://github.com/immich-app/immich $TMP
+chown -R immich:immich $TMP
+
+upgrade_script=$(cat <<'SCRIPTEOF'
+TAG=v1.105.1
+
+IMMICH_PATH=/var/lib/immich
+APP=$IMMICH_PATH/app
+
+BASEDIR=$(dirname "$0")
+
+set -xeuo pipefail
+
+mv $APP/start.sh /tmp/start.sh
+mv $APP/machine-learning/start.sh /tmp/machine-learning_start.sh
+
+rm -rf $APP
+mkdir -p $APP
+
+# Wipe npm, pypoetry, etc
+# This expects immich user's home directory to be on $IMMICH_PATH/home
+rm -rf $IMMICH_PATH/home
+mkdir -p $IMMICH_PATH/home
+
+cd $1
+git reset --hard $TAG
+
+# immich-server
+cd server
+npm ci
+npm run build
+npm prune --omit=dev --omit=optional
+cd -
+
+cd open-api/typescript-sdk
+npm ci
+npm run build
+cd -
+
+cd web
+npm ci
+npm run build
+cd -
+
+cp -a server/node_modules server/dist server/bin $APP/
+cp -a web/build $APP/www
+cp -a server/resources server/package.json server/package-lock.json $APP/
+cp -a server/start-server.sh $APP/
+cp -a server/start-microservices.sh $APP/
+cp -a LICENSE $APP/
+cd $APP
+npm cache clean --force
+cd -
+
+# immich-machine-learning
+mkdir -p $APP/machine-learning
+python3 -m venv $APP/machine-learning/venv
+(
+  # Initiate subshell to setup venv
+  . $APP/machine-learning/venv/bin/activate
+  pip3 install poetry
+  cd machine-learning
+  # pip install poetry
+  max_attempts=5
+  attempt=1
+  while [ $attempt -le $max_attempts ]; do
+    echo "Attempt $attempt of $max_attempts: Installing dependencies..."
+    set +e
+    poetry install --no-root --with dev --with cpu && break || echo "Attempt failed, retrying in 10 seconds..."
+    set -e
+    sleep 10
+    attempt=$((attempt + 1))
+  done
+
+  if [ $attempt -gt $max_attempts ]; then
+    echo "Failed to install dependencies after $max_attempts attempts."
+    exit 1
+  fi
+
+  cd ..
+)
+cp -a machine-learning/ann machine-learning/app $APP/machine-learning/
+
+# Replace /usr/src
+cd $APP
+grep -Rl /usr/src | xargs -n1 sed -i -e "s@/usr/src@$IMMICH_PATH@g"
+sed -i -e "s@\"/cache\"@\"$IMMICH_PATH/cache\"@g" $APP/machine-learning/app/config.py
+
+# Install sharp
+cd $APP
+npm install sharp
+
+# Use 127.0.0.1
+sed -i -e "s@app.listen(port)@app.listen(port, '127.0.0.1')@g" $APP/dist/main.js
+
+# Cleanup
+rm -rf $1
+
+chown -R immich:immich $IMMICH_PATH
+
+mv /tmp/start.sh $APP/start.sh
+mv /tmp/machine-learning_start.sh $APP/machine-learning/start.sh
+SCRIPTEOF
+)
+
+echo "$upgrade_script" > /tmp/upgrade.sh
+chmod 0755 /tmp/upgrade.sh
+sudo -u immich bash -c "/tmp/upgrade.sh $TMP"
+rm /tmp/upgrade.sh
+
+systemctl start immich-machine-learning.service
+systemctl start immich-microservices.service
+systemctl start immich.service
+
+echo 3 > /root/.targetonce
+
