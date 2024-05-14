@@ -6,3 +6,4 @@ su casper - bash -c "ghost update --no-prompt"
 
 echo 2 > /root/.targetonce
 
+#
