@@ -1,5 +1,5 @@
 #!/bin/bash
-# immich upgrade 2 -> 3
+# immich upgrade 3 -> 4
 
 systemctl stop immich-machine-learning.service
 systemctl stop immich-microservices.service
@@ -121,5 +121,5 @@ systemctl start immich-machine-learning.service
 systemctl start immich-microservices.service
 systemctl start immich.service
 
-echo 3 > /root/.targetonce
+echo 4 > /root/.targetonce
 
