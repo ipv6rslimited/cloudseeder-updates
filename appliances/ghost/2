@@ -1,9 +1,6 @@
 #!/bin/bash
 # ghost upgrade 1 -> 2
 
-cd /var/www && for d in */; do [ "$d" != "html/" ] && cd "$d" && break; done &&
-su casper - bash -c "ghost update --no-prompt"
+su casper - bash -c "cd /var/www/$SERVERNAME && ghost update --no-prompt"
 
 echo 2 > /root/.targetonce
-
-#
