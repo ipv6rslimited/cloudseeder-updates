@@ -5,3 +5,4 @@ cd /var/www && for d in */; do [ "$d" != "html/" ] && cd "$d" && break; done &&
 su casper - bash -c "ghost update --no-prompt"
 
 echo 3 > /root/.targetonce
+
