@@ -1,7 +1,9 @@
 #!/bin/bash
 # ghost upgrade 2 -> 3
 
+# For ghost we'll update the appliance number first as a work around as their upgrade process is seamless.
+echo 3 > /root/.targetonce
+
 su casper - bash -c "cd /var/www/$SERVERNAME && ghost update --no-prompt" || true
 
-echo 3 > /root/.targetonce
 
