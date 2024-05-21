@@ -1,0 +1,12 @@
+#!/bin/bash
+# planka upgrade 3 -> 4
+
+(curl -fsSL https://github.com/plankanban/planka/releases/download/v1.17.4/planka-prebuild-v1.17.4.zip -o /home/planka/planka-prebuild.zip &&
+ chown planka:planka /home/planka/planka-prebuild.zip &&
+ sudo -u planka bash -c "unzip -o /home/planka/planka-prebuild.zip -d /var/www" &&
+ rm /home/planka/planka-prebuild.zip &&
+ sudo -u planka bash -c "cd /var/www/planka && npm install" &&
+ systemctl restart planka.service)
+
+
+echo 4 > /root/.targetonce
