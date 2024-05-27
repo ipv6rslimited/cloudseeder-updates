@@ -122,5 +122,9 @@
   {
     "title": "arr",
     "version": 1
+  },
+  {
+    "title": "miniflux",
+    "version": 1
   }
 ]
