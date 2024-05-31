@@ -1,0 +1,18 @@
+#!/bin/bash
+# misskey upgrade 1 -> 2
+
+systemctl stop misskey
+
+cd /opt/misskey || exit
+git pull
+git checkout 2024.5.0
+git submodule update --init
+yes | NODE_ENV=production pnpm install --frozen-lockfile
+pnpm run clean
+NODE_ENV=production pnpm run build
+pnpm run migrate
+
+systemctl start misskey
+
+echo 2 > /root/.targetonce
+
