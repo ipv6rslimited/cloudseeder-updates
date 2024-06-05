@@ -1,0 +1,14 @@
+#!/bin/bash
+# ollamaweb upgrade 9 -> 10
+
+(cd /app &&
+ git pull &&
+ git fetch --tags &&
+ git checkout tags/v0.2.5 &&
+ npm i &&
+ npm run build &&
+ cd backend &&
+ pip install -r requirements.txt -U &&
+ systemctl restart openwebui.service)
+
+echo 10 > /root/.targetonce
