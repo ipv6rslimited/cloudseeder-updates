@@ -1,0 +1,8 @@
+#!/bin/bash
+# ghost upgrade 7 -> 8
+
+
+su casper - bash -c "cd /var/www/$SERVERNAME && ghost update --no-prompt" || true
+
+echo 8 > /root/.targetonce
+
