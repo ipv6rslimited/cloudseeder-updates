@@ -1,0 +1,12 @@
+#!/bin/bash
+# codeserver upgrade 3 -> 4
+
+arch=$(arch | sed s/aarch64/arm64/ | sed s/x86_64/amd64/)
+
+(cd /tmp &&
+ curl -fOL https://github.com/coder/code-server/releases/download/v4.90.0/code-server_4.90.0_${arch}.deb &&
+ dpkg -i code-server_4.90.0_${arch}.deb &&
+ systemctl daemon-reload &&
+ systemctl restart code-server@codeserver)
+
+echo 4 > /root/.targetonce
