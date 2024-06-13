@@ -13,7 +13,7 @@
   },
   {
     "title": "codeserver",
-    "version": 4
+    "version": 5
   },
   {
     "title": "wordpress",
@@ -45,7 +45,7 @@
   },
   {
     "title": "rocketchat",
-    "version": 3
+    "version": 4
   },
   {
     "title": "vaultwarden",
