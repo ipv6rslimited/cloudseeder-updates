@@ -13,7 +13,7 @@
   },
   {
     "title": "codeserver",
-    "version": 5
+    "version": 6
   },
   {
     "title": "wordpress",
@@ -21,7 +21,7 @@
   },
   {
     "title": "ghost",
-    "version": 10
+    "version": 11
   },
   {
     "title": "paperless",
@@ -77,7 +77,7 @@
   },
   {
     "title": "planka",
-    "version": 7
+    "version": 8
   },
   {
     "title": "thelounge",
