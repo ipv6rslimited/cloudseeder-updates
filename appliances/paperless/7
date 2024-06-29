@@ -1,0 +1,32 @@
+#!/bin/bash
+# paperless upgrade 6 -> 7
+
+systemctl stop paperless-consumer
+systemctl stop paperless-scheduler
+systemctl stop paperless-task-queue
+systemctl stop paperless-webserver
+
+rm -rf /opt/paperless/docker
+rm -rf /opt/paperless/docs
+rm -rf /opt/paperless/scripts
+rm -rf /opt/paperless/src
+rm -rf /opt/paperless/static
+mv /opt/paperless/paperless.conf /root/paperless.conf
+
+curl -O -L https://github.com/paperless-ngx/paperless-ngx/releases/download/v2.10.2/paperless-ngx-v2.10.2.tar.xz
+tar -xf paperless-ngx-v2.10.2.tar.xz -C /opt/paperless
+mv /opt/paperless/paperless-ngx/* /opt/paperless/
+rm -rf /opt/paperless/paperless-ngx
+chown -R paperless:paperless /opt/paperless
+mv /root/paperless.conf /opt/paperless/paperless.conf
+
+su - paperless -c "PATH=\"/opt/paperless/.local/bin:$PATH\" && cd /opt/paperless && pip3 install -r requirements.txt && cd src && python3 manage.py migrate"
+
+systemctl start paperless-consumer
+systemctl start paperless-scheduler
+systemctl start paperless-task-queue
+systemctl start paperless-webserver
+
+
+echo 7 > /root/.targetonce
+

@@ -5,7 +5,7 @@
   },
   {
     "title": "ollamaweb",
-    "version": 15
+    "version": 16
   },
   {
     "title": "nextcloud",
@@ -21,11 +21,11 @@
   },
   {
     "title": "ghost",
-    "version": 12
+    "version": 13
   },
   {
     "title": "paperless",
-    "version": 6
+    "version": 7
   },
   {
     "title": "shrimpproxy",
@@ -45,7 +45,7 @@
   },
   {
     "title": "rocketchat",
-    "version": 5
+    "version": 6
   },
   {
     "title": "vaultwarden",
@@ -61,11 +61,11 @@
   },
   {
     "title": "stalwart",
-    "version": 2
+    "version": 3
   },
   {
     "title": "jellyfin",
-    "version": 7
+    "version": 8
   },
   {
     "title": "peertube",
