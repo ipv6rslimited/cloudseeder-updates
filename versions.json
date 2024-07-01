@@ -1,134 +1,134 @@
 [
   {
     "title": "mastodon",
-    "version": 1
+    "version": 2
   },
   {
     "title": "ollamaweb",
-    "version": 16
+    "version": 17
   },
   {
     "title": "nextcloud",
-    "version": 1
+    "version": 2
   },
   {
     "title": "codeserver",
-    "version": 7
-  },
-  {
-    "title": "wordpress",
-    "version": 1
-  },
-  {
-    "title": "ghost",
-    "version": 13
-  },
-  {
-    "title": "paperless",
-    "version": 7
-  },
-  {
-    "title": "shrimpproxy",
-    "version": 1
-  },
-  {
-    "title": "misskey",
-    "version": 2
-  },
-  {
-    "title": "lemmy",
-    "version": 1
-  },
-  {
-    "title": "pixelfed",
-    "version": 2
-  },
-  {
-    "title": "rocketchat",
-    "version": 6
-  },
-  {
-    "title": "vaultwarden",
-    "version": 1
-  },
-  {
-    "title": "bluesky",
-    "version": 1
-  },
-  {
-    "title": "mail",
-    "version": 1
-  },
-  {
-    "title": "stalwart",
-    "version": 3
-  },
-  {
-    "title": "jellyfin",
     "version": 8
   },
   {
-    "title": "peertube",
-    "version": 1
+    "title": "wordpress",
+    "version": 2
   },
   {
-    "title": "immich",
+    "title": "ghost",
+    "version": 14
+  },
+  {
+    "title": "paperless",
+    "version": 8
+  },
+  {
+    "title": "shrimpproxy",
+    "version": 2
+  },
+  {
+    "title": "misskey",
+    "version": 3
+  },
+  {
+    "title": "lemmy",
+    "version": 2
+  },
+  {
+    "title": "pixelfed",
+    "version": 3
+  },
+  {
+    "title": "rocketchat",
+    "version": 7
+  },
+  {
+    "title": "vaultwarden",
+    "version": 2
+  },
+  {
+    "title": "bluesky",
+    "version": 2
+  },
+  {
+    "title": "mail",
+    "version": 2
+  },
+  {
+    "title": "stalwart",
     "version": 4
   },
   {
-    "title": "planka",
+    "title": "jellyfin",
     "version": 9
   },
   {
+    "title": "peertube",
+    "version": 2
+  },
+  {
+    "title": "immich",
+    "version": 5
+  },
+  {
+    "title": "planka",
+    "version": 10
+  },
+  {
     "title": "thelounge",
-    "version": 1
+    "version": 2
   },
   {
     "title": "xmpp",
-    "version": 1
+    "version": 2
   },
   {
     "title": "yacy",
-    "version": 1
+    "version": 2
   },
   {
     "title": "gitea",
-    "version": 2
+    "version": 3
   },
   {
     "title": "gitlab",
-    "version": 1
-  },
-  {
-    "title": "minecraft",
-    "version": 1
-  },
-  {
-    "title": "funkwhale",
-    "version": 1
-  },
-  {
-    "title": "navidrome",
     "version": 2
   },
   {
+    "title": "minecraft",
+    "version": 2
+  },
+  {
+    "title": "funkwhale",
+    "version": 2
+  },
+  {
+    "title": "navidrome",
+    "version": 3
+  },
+  {
     "title": "lamp",
-    "version": 1
+    "version": 2
   },
   {
     "title": "base",
-    "version": 1
+    "version": 2
   },
   {
     "title": "arr",
-    "version": 1
+    "version": 2
   },
   {
     "title": "miniflux",
-    "version": 1
+    "version": 2
   },
   {
     "title": "nostr",
-    "version": 1
+    "version": 2
   }
 ]
