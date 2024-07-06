@@ -21,7 +21,7 @@
   },
   {
     "title": "ghost",
-    "version": 14
+    "version": 15
   },
   {
     "title": "paperless",
@@ -61,7 +61,7 @@
   },
   {
     "title": "stalwart",
-    "version": 4
+    "version": 5
   },
   {
     "title": "jellyfin",
@@ -93,7 +93,7 @@
   },
   {
     "title": "gitea",
-    "version": 3
+    "version": 4
   },
   {
     "title": "gitlab",
